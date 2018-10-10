@@ -11,6 +11,7 @@ import functools
 import socket
 
 import botocore.config
+import requests
 import six
 
 from pytest_localstack import constants, exceptions
@@ -25,12 +26,11 @@ def is_port_open(port_or_url, timeout=1):
     else:
         port = port_or_url
         host = "127.0.0.1"
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    with contextlib.closing(sock):
-        sock.settimeout(timeout)
-        result = sock.connect_ex((host, port))
-        return result == 0
-
+    try:
+        resp = requests.get('http://{}:{}/'.format(host, port))
+        return resp.status_code != 502
+    except:
+        return False
 
 def port_check(service_name):
     """Check that a service port is open."""

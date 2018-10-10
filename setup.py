@@ -15,6 +15,7 @@ REQUIRES = [
     "pluggy>=0.6.0",
     "pytest>=3.3.0",  # need caplog (+ warnings for tests)
     "six",
+    "requests>=2.0.0"
 ]
 
 # Dependencies to run the tests for this Python library.
