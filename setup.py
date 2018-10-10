@@ -38,8 +38,8 @@ def setup_package():
         changes = f.read()
 
     setup(
-        name=about["__title__"],
-        version=about["__version__"],
+        name="pytest-localstack",
+        version="0.1.5-vklabs1",
         description=about["__summary__"],
         long_description=readme + u"\n\n" + changes,
         author=about["__author__"],
