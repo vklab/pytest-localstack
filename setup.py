@@ -39,7 +39,7 @@ def setup_package():
 
     setup(
         name="pytest-localstack",
-        version="0.1.5-vklabs1",
+        version="0.1.5-vklabs2",
         description=about["__summary__"],
         long_description=readme + u"\n\n" + changes,
         author=about["__author__"],

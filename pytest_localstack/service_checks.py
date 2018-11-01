@@ -27,7 +27,12 @@ def is_port_open(port_or_url, timeout=1):
         port = port_or_url
         host = "127.0.0.1"
     try:
-        resp = requests.get('http://{}:{}/'.format(host, port))
+        url = 'http://{}:{}/'.format(host, port)
+        resp = requests.get(url)
+        if resp.status_code != 502:
+            return True
+        # Maybe this is dynamodb
+        resp = requests.post(url, json={})
         return resp.status_code != 502
     except:
         return False
